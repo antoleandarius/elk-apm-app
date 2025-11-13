@@ -15,9 +15,16 @@ app.config['ELASTIC_APM'] = {
     'SERVER_URL': os.getenv('ELASTIC_APM_SERVER_URL'),
     'SECRET_TOKEN': os.getenv('ELASTIC_APM_SECRET_TOKEN'),
     'ENVIRONMENT': os.getenv('NODE_ENV', 'development'),
+    'DEBUG': True,
+    'LOG_LEVEL': 'debug',
 }
 
 apm = ElasticAPM(app)
+
+print(f"APM Configuration:")
+print(f"  Server URL: {os.getenv('ELASTIC_APM_SERVER_URL')}")
+print(f"  Service Name: log-generator")
+print(f"  Environment: {os.getenv('NODE_ENV', 'development')}")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
